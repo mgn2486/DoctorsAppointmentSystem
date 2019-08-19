@@ -1,0 +1,11 @@
+hr.medHr{
+    border: 1px solid red;
+}
+
+.socialLinks li{
+    display: inline-block;
+}
+
+#footer{
+    color: white; background: blue;
+}

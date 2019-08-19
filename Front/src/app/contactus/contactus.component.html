@@ -1,0 +1,123 @@
+<br>
+<div class="container text-white" style="background: blue;">
+  <br>
+  <h4>CONTACT US</h4>
+  <hr class="medHr">
+  <div class="row">
+
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <h4>Send Us a Message</h4>
+      <hr class="medHr">      
+      <form [formGroup]="ContactForm" novalidate>
+        
+          <div class="form-group">
+              <label>Full Name:</label>
+              <input class="form-control" formControlName="FullName" type="text">
+          </div>        
+          <div *ngIf="ContactForm.controls['FullName'].invalid && (ContactForm.controls['FullName'].dirty || ContactForm.controls['FullName'].touched)" class="alert alert-danger">
+             <div *ngIf="ContactForm.controls['FullName'].errors.required">
+                Your full name is required.
+             </div>
+          </div>
+
+          <div class="form-group">
+              <label>Your Email:</label>
+              <input class="form-control" formControlName="EmailFrom" type="text">
+          </div>        
+          <div *ngIf="ContactForm.controls['EmailFrom'].invalid && (ContactForm.controls['EmailFrom'].dirty || ContactForm.controls['EmailFrom'].touched)" class="alert alert-danger">
+             <div *ngIf="ContactForm.controls['EmailFrom'].errors.required">
+                Your proper email is required.
+             </div>
+          </div>
+  
+          <div class="form-group">
+              <label>Subject To:</label>
+              <input class="form-control" formControlName="Subject" type="text">
+          </div>
+          <div *ngIf="ContactForm.controls['Subject'].invalid && (ContactForm.controls['Subject'].dirty || ContactForm.controls['Subject'].touched)" class="alert alert-danger">
+              <div *ngIf="ContactForm.controls['Subject'].errors.required">
+                Subject is required.
+              </div>
+          </div>
+    
+          <div class="form-group">
+              <label>Message :</label>
+              <textarea class="form-control" formControlName="Message" type="textarea" rows="10"></textarea>
+          </div>
+          <div *ngIf="ContactForm.controls['Message'].invalid && (ContactForm.controls['Message'].dirty || ContactForm.controls['Message'].touched)" class="alert alert-danger">
+              <div *ngIf="ContactForm.controls['Message'].errors.required">
+                  Message is required.
+              </div>
+          </div>
+    
+          <button type="submit"
+              [disabled]="ContactForm.pristine || ContactForm.invalid" class="btn btn-success" (click)= 'SendMail()'>
+              Send Mail
+          </button>
+          <div class="form-group message">
+              <p style=" text-align: center; font-weight: bold;" [style.color]="hasErrors ? 'red': 'green'">
+                {{ responseSent }}
+              </p>
+          </div>
+          <div *ngIf="isLoading" class="relative">
+              <app-spinner></app-spinner>
+          </div>          
+      </form>
+      <br />
+
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="row">
+          <div class="col-lg-12">
+              <h4>Call Us</h4>
+              <hr class="medHr">
+              <p>
+                <b>Landline :</b> +27 (0) 000 0000<br>
+                <b>Mobile :</b> +27 (0) 63 528 9969 <br>
+                <b>Email :</b> info@drkunleandpartners.com       
+              </p>
+              <br>
+              <h4>Physical Address : </h4>
+              <hr class="medHr">
+              <p>
+                2 Arbour Mall <br>Umbogintwini, <br> Amazimtoti<br> KwaZulu Natal,<br>4126      
+              </p>
+          </div>
+             
+      </div>
+      
+      <div class="row">
+          <div class="col-lg-12">
+              <p>
+                  <b>You can also follow us on</b>
+              </p>            
+              <hr class="medHr">
+              <div class="row">
+                <ul class="socialLinks">
+                    <li><a href="#"><div class="p-2 item"><i class="fa fa-linkedin-square"></i></div></a></li>
+                    <li><a href="#"><div class="p-2 item"><i class="fa fa-whatsapp"></i></div></a></li>
+                    <li><a href="#"><div class="p-2 item"><i class="fa fa-twitter-square"></i></div></a></li>
+                    <li><a href="#"><div class="p-2 item"><span class="fa fa-facebook"></span></div></a></li>
+                </ul>
+              </div>                
+          </div>            
+      </div>
+  </div>
+</div>
+       
+  <div class="row">
+      <div class="col-lg-12">
+          <h4>Find Us</h4>
+          <hr/>
+          <br>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.582805678776!2d30.171721314983014!3d-23.833429984548438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec402108db36aa5%3A0xd0a42c5ab0a4b133!2s7+Rietbok+St%2C+Tzaneen%2C+0850!5e0!3m2!1sen!2sza!4v1550538395016" width="100%" height="450" frameborder="0" style="border:1 px solid grey" allowfullscreen></iframe>
+              </p>
+          </div>
+      </div>
+  </div>
+  
+</div>
+

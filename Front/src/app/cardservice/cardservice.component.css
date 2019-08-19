@@ -1,0 +1,20 @@
+.card{
+    border-radius: 5px 60px 5px;
+    width: 100%; 
+    background: darkblue; 
+    color: white;
+}
+
+.card ul li {
+    border-bottom: 1px solid #ffffff; line-height: 30px; padding: 5px;
+    list-style: none;
+}
+
+#service-Cards {
+    top: 0;
+    position: relative;
+    margin-top: -1%;
+}
+
+
+

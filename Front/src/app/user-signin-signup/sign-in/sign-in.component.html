@@ -1,0 +1,45 @@
+<div class="container" style="margin-top:4em; ">
+  
+  <div class="row">
+    <div class="col-md-10" style="text-align:center;">
+      <h3>Already a Member<br>  - Login - </h3>
+      <span><i class="fa fa-unlock-alt"></i></span>
+      <hr class="medHr"><br>
+    </div> 
+  </div>
+  
+  <form [formGroup]="MedicalLoginForm" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+    <div class="row">
+      <div class="col-md-10 form-group input-group">
+        <span class="input-group-addon icon">
+          <img src="assets/images/icons/icon-email.png" class="img-responsive" width="30" height="24"/>
+        </span>
+        <input type="text" class="form-control" #UserName [formControlName]="'username'" placeholder="User-name *" value="" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 form-group input-group">
+        <span class="input-group-addon icon">
+          <img src="assets/images/icons/icon-lock.png" class="img-responsive" width="30" height="24"/>
+        </span>
+        <input type="password" class="form-control" #Password  [formControlName]="'password'"   placeholder="Password *" value="" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <button type="submit" class="btnRegister float-right" [disabled]="MedicalLoginForm.invalid" [ngClass] = "{'dis-Button-color': !MedicalLoginForm.valid}"><span style="font-size: small;">SignIn</span></button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <button type="submit" class="btnRegister float-right dis-Button-color" (click)="resetForm(MedicalLoginForm)"><span style="font-size: small;">Cancel</span></button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+  <br>
+</div>

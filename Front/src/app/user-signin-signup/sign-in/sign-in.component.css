@@ -1,0 +1,33 @@
+.register-form{
+    padding: 10%;
+}
+
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+
+.btnRegister{
+    float: left;
+    border: none;
+    border-radius: 0.9rem;
+    background: #0062cc;
+    color: #fff;
+    padding: 5px 20px 10px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    float: right;
+    margin: 5px;
+}
+
+.dis-Button-color{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.icon{
+    background:#435DB0; padding:5px;
+}

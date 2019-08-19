@@ -1,0 +1,246 @@
+<div class="container">
+
+  <div *ngIf="userClaims" style="color: white; background: blue; padding: 4%">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>Members - Section</h3>
+        <p>Welcome : <b>{{userClaims.FirstName}} {{userClaims.LastName}}</b></p>
+        <div class="col-lg-3 my-auto">
+          <div *ngIf="userService.roleMatch(['Admin'])">
+            <a routerLink="/admin/dashboard" class="btn btn-success pull-left"><i class="fa fa-home"></i> Admin</a>
+          </div>
+        </div>
+        <button class="btn btn-danger pull-right" (click)="Logout()">Logout <i class="fa fa-sign-out"></i></button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h3>Details</h3>
+        <hr class="medHr">
+        <p><b>Username:</b> {{userClaims.UserName}}</p>
+        <p><b>Email:</b> {{userClaims.Email}}</p>
+        <p><b>Full Name:</b> {{userClaims.FirstName}} {{userClaims.LastName}}</p>
+        <p><b>Logged On:</b> {{userClaims.LoggedOn}}</p>
+        <br>
+
+      </div>
+
+      <div class="col-lg-9">
+        <h3>Medical Services</h3>
+        <hr class="medHr">
+
+        <div class="col-lg-12">
+          <h3>Appointment - List</h3>
+          <hr />
+          <div class="panel">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-10">
+                  <table class="table" style="color: white;">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Dr Appointed</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background-color: green;">
+                        <th scope="row">1</th>
+                        <td>23 August 2019</td>
+                        <td>Dr Kunle</td>
+                        <td><a href=#>Closed</a></td>
+                      </tr>
+
+                      <tr style="background-color: red;">
+                        <th scope="row">2</th>
+                        <td>01 August 2019</td>
+                        <td>Dr Kunle</td>
+                        <td><a href=#>Expired</a></td>
+                      </tr>
+                      <tr *ngIf="newApp">
+                        <th scope="row">3</th>
+                        <td>15 August 2019</td>
+                        <td>Dr Kunle</td>
+                        <td><a href=#>Pending</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="col-lg-2">
+                  <button class="btn-primary" (click)="openModal('appointmentBooking-modal')" (click)="ResetAppointmentFormBooking()">Create New</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-12">
+          <hr class="medHr">
+        </div>
+        
+      <div class="panel-footer">
+        <div class="col-lg-12">            
+          <p style="font: italic;">Please note: this system has been created for our valued patients convinience.</p>
+        </div>
+      </div>
+    </div>
+
+    <custom-modal id="appointmentBooking-modal" style="height:1000px">
+      <h2>Create a New Appointment</h2>
+      <hr class="medHr">
+      <!-- <form [formGroup]="appointmentBookingForm">
+        <div class="row">
+          <div class="col-lg-12">
+            <p style=" text-align: center; font-weight: bold;" [style.color]="hasErrors ? 'red': 'green'">
+              {{ responseSent }}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <label class="pull-right"><b>Date:</b> </label>
+          </div>
+          <div class="col-lg-6">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" class="form-control" [min]="minDate" [max]="maxDate"
+                formControlName="appointmentDate" ngbDatepicker #d="ngbDatepicker"/>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i
+                    class="fa fa-calendar form-control-feedback"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div><br>
+
+        <img *ngIf="loading" src="assets/images/LoadingSpinner.gif" style="position: absolute;" />
+        <div class="row">
+          <div class="col-lg-6">
+            <label class="pull-right"><b>Time:</b> </label>
+          </div>
+          <div class="col-lg-6">
+            <div>
+              <select formControlName="preferredTimeSlot">
+                <option *ngFor="let slot of timeSlots" [value]="slot.id" [selected]="slot.id == 1">{{slot.Time}}
+                </option>
+              </select><br>
+             <span *ngIf="appointmentBookingForm.get('preferredTimeSlot').errors.required">Please Pick a time Slot</span> 
+            </div>
+          </div>
+        </div>
+
+        
+
+        <br>
+        <div class="row">
+          <div class="col-lg-12">
+            <button [disabled]="appointmentBookingForm.pristine || appointmentBookingForm.invalid"
+              class="btn btn-primary pull-right" (click)="RequestAppointment()">Book<i class="fa fa-paper-plane"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <pre>Model: {{ appointmentBookingForm.value | json }}</pre>
+      </form> -->
+
+      <form class="form-horizontal" [formGroup]="appointmentBookingForm">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-lg-12">
+                  <p style=" text-align: center; font-weight: bold;" [style.color]="hasErrors ? 'red': 'green'">
+                    {{ responseSent }}
+                  </p>                
+                </div>
+              </div>
+            </div>
+
+
+            <img *ngIf="isloading" src="assets/images/loadingSpinner.gif" style="position: absolute;" />
+
+            <div class="panel-body">              
+              <div class="form-group">
+                <div class="row" >                
+                  <div class="col-lg-4">
+                    <label class="control-label" for="eventName">Select Date</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class='input-group add-on date datepicker'>
+                      <input formControlName="appointmentDate" placeholder="yyyy-mm-dd" class="form-control" type="text" class="form-control date-picker" 
+                            ngbDatepicker #d="ngbDatepicker"/>
+                      <div class="input-group-btn" (click)="d.toggle()">
+                        <button class="btn btn-outline-secondary">
+                            <i class="fa fa-calendar form-control-feedback"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <label class="control-label" for="eventEmail">Time Slot</label>
+                  </div>
+                  <div class="col-lg-8">
+                      <select formControlName="preferredTimeSlot">
+                        <option *ngFor="let slot of timeSlots" [value]="slot.id" [selected]="slot.id == 1">{{slot.Time}}
+                        </option>
+                      </select><br>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <label class="pull-right"><b>Preferred Doctor:</b> </label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div>
+                      <select formControlName="preferredDoctor">
+                        <option *ngFor="let doctor of doctorsList" [value]="doctor.id" [selected]="doctor.id == 1">
+                          {{doctor.Name}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>        
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="panel-footer">
+                  <button [disabled]="appointmentBookingForm.pristine || appointmentBookingForm.invalid" 
+                    class="btn btn-primary pull-right" type="submit" (click)="RequestAppointment()">Submit</button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </form>
+
+      <hr style="border: 1px solid blue;"/>
+      <button class="btn btn-danger" (click)="closeModal('appointmentBooking-modal');">Close</button>
+    </custom-modal>
+
+
+
+
+
+
+
+  </div>
+</div>
+<br>

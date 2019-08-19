@@ -1,0 +1,8 @@
+div.background {
+    background: url("../../assets/images/home/article_direction.jpg");
+    width:  100%; /*or 70%, or what you want*/
+    height: 250px; /*or 70%, or what you want*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

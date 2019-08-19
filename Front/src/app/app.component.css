@@ -1,0 +1,10 @@
+.carousel-Images {
+    background-color: #fff;
+    position: absolute;
+    margin-top: 15%;
+}
+#router-outlet-position {
+    top: 0;
+    position: relative;
+    margin-top: -5%;
+}
