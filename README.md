@@ -4,6 +4,6 @@ This web application must register users and store their details. All users must
 
 # APPLICATION
 - Currently application consists of the front end developed in angular 8, this can be run as follows:
--- Navigate to the "Front" directory folder.
---- From the command line exec: "npm i" to install all necessary packages.
---- To start the application: "ng serve" this will start the application in localhost:4200
+- Navigate to the "Front" directory folder.
+- From the command line exec: "npm i" to install all necessary packages.
+- To start the application: "ng serve" this will start the application in localhost:4200
